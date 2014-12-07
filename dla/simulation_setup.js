@@ -1,21 +1,23 @@
-var intervalId = -1;
-
 function SimulationViewModel () {
+	var intervalId = -1;
+	this.condensationType = ko.observable("bottom");
+	this.canvasWidth = ko.observable(500);
+	this.canvasHeight = ko.observable(500);
+	this.density = ko.observable(0.15);
+	this.stoppingfraction = ko.observable(0.25);
+
 	this.stopSimulation = function () {
-		if (intervalId > -1) {
-			clearInterval(intervalId);
-		}
+		clearInterval(intervalId);
 	};
 
 	this.startSimulation = function() {
-		var cond = document.querySelector('input[name="optradio"]:checked').value;
-		var canvas = resizeCanvas(this.canvasWidth(), this.canvasHeight());
+		var ctx = resizeCanvas(this.canvasWidth(), this.canvasHeight()).getContext('2d');
 		var field = createField(this.canvasWidth(), this.canvasHeight());
 
 		var particleCount = Math.floor(this.canvasWidth() * this.canvasHeight() * this.density());
 		var particles = createParticles(field, particleCount);
 
-		condensation[cond](field);
+		condensation[this.condensationType()](field);
 		resetAllParticles(particles,field);
 
 		if (intervalId > -1) {
@@ -30,7 +32,7 @@ function SimulationViewModel () {
 				updateAllParticles(particles, field);
 			}
 			
-			paint(field, canvas, particles, "FF0000","00FF00");
+			paint(field, ctx, particles, "FF0000","00FF00");
 
 			var idle = 0;
 			var i = particles.count;
@@ -40,18 +42,12 @@ function SimulationViewModel () {
 
 			if (idle > stoppingFraction * particles.count) {
 				stopSimulation();
-				paint(field, canvas, particles, "FF000FF","00FFFF");
+				paint(field, ctx, particles, "FF000FF","00FFFF");
 
 			}
 
-		} , 33);
+		} , 1000 / 30); // 30 FPS
 	};
-
-	this.canvasWidth = ko.observable(500);
-	this.canvasHeight = ko.observable(500);
-	this.density = ko.observable(0.15);
-	this.stoppingfraction = ko.observable(0.25);
-
 };
 
 ko.applyBindings(new SimulationViewModel());

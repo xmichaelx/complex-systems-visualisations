@@ -9,7 +9,6 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
     <script src="dla.js"></script>
-    
   </head>
   <body>
 	  <div class="container">
@@ -23,30 +22,34 @@
 		<div class="row">
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 				<div class="input-group">
-					<span class="input-group-addon">Width</span>	<input type="text" class="form-control" data-bind="value:canvasWidth">
+					<span class="input-group-addon">Width</span>
+					<input type="text" class="form-control" data-bind="value:canvasWidth">
 				</div>
 			</div>
 
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 				<div class="input-group">
-					<span class="input-group-addon">Height</span> 	<input type="text" class="form-control" data-bind="value:canvasHeight">
+					<span class="input-group-addon">Height</span>
+					<input type="text" class="form-control" data-bind="value:canvasHeight">
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 				<div class="input-group">
-					<span class="input-group-addon">Particle Density</span> 	<input type="text" class="form-control" data-bind="value:density">
+					<span class="input-group-addon">Particle Density</span>
+					<input type="text" class="form-control" data-bind="value:density">
 				</div>
 			</div>
 			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
 				<div class="input-group">
-					<span class="input-group-addon">Stopping fraction</span> 	<input type="text" class="form-control" data-bind="value:stoppingfraction">
+					<span class="input-group-addon">Stopping fraction</span>
+					<input type="text" class="form-control" data-bind="value:stoppingfraction">
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<span class="label label-default">Condenstation type:</span>
-				 <label class="radio-inline"><input type="radio" name="optradio" value="bottom" checked="checked">bottom</label>
-				 <label class="radio-inline"><input type="radio" name="optradio" value="center">center</label>
-				 <label class="radio-inline"><input type="radio" name="optradio" value="corner">corner</label> 
+				 <label class="radio-inline"><input type="radio" name="optradio" value="bottom" data-bind="checked: condensationType">bottom</label>
+				 <label class="radio-inline"><input type="radio" name="optradio" value="center" data-bind="checked: condensationType">center</label>
+				 <label class="radio-inline"><input type="radio" name="optradio" value="corner" data-bind="checked: condensationType">corner</label> 
 			</div>
 	    </div>
 	    <div class="row">
