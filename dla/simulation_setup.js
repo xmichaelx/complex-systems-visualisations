@@ -11,7 +11,7 @@ function SimulationViewModel () {
 	};
 
 	this.startSimulation = function() {
-		var ctx = resizeCanvas(this.canvasWidth(), this.canvasHeight()).getContext('2d');
+		var ctx = getContext(this.canvasWidth(), this.canvasHeight());
 		var field = createField(this.canvasWidth(), this.canvasHeight());
 
 		var particleCount = Math.floor(this.canvasWidth() * this.canvasHeight() * this.density());

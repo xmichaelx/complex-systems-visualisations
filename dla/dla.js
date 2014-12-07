@@ -7,10 +7,7 @@ function createField(width, height) {
 // different points to which our particles will stick
 var condensation = {
 	center : function(field) {// center occupied
-		var fcenterX = Math.floor(field.width / 2);
-		var fcenterY = Math.floor(field.width / 2);
-
-		field.field[fcenterX + fcenterY * field.width] = 1;
+		field.field[Math.floor(field.width / 2) + Math.floor(field.height / 2) * field.width] = 1;
 	},
 	bottom : function(field) { // bottom line  occupied
 		var i = field.width;
@@ -25,7 +22,12 @@ var condensation = {
 
 // create data structure for storing particles
 function createParticles(field, particleCount) {
-	return { x: new Uint16Array(particleCount), y:new Uint16Array(particleCount), stuck: new Uint8Array(particleCount), count: particleCount};
+	return { 
+		x: new Uint16Array(particleCount), 
+		y: new Uint16Array(particleCount), 
+		stuck: new Uint8Array(particleCount), 
+		count: particleCount
+	};
 }
 
 // changing postion of a single particle to a random spot on map
@@ -45,16 +47,13 @@ function resetSingleParticle(particles, field, i) {
 // changing postion of a all particles to a random spot on map
 function resetAllParticles(particles, field) {
 	var i = particles.count;
-	while (i--) {
+	while (i--) 
 		resetSingleParticle(particles, field, i);
-	}
 }
 
 // check if particle is now neighbour with stuck particle
 function alone(particles, field, i) {
-	var cx = particles.x[i];
-	var cy = particles.y[i];
-
+	var cx = particles.x[i], cy = particles.y[i];
 	var lx = cx - 1, rx = cx + 1;
 	var ty = cy - 1, by = cy + 1;
 
@@ -68,13 +67,11 @@ function alone(particles, field, i) {
 	by *= field.width;     
 	ty *= field.width;
 
-	if (field.field[cx + ty] || field.field[lx + cy] ||         
-		field.field[rx + cy] || field.field[cx + by]) {
+	if (field.field[cx + ty] || field.field[lx + cy] || field.field[rx + cy] || field.field[cx + by]) {
 		return false;
 	}
 
-	if (field.field[lx + ty] || field.field[lx + by] ||         
-		field.field[rx + ty] || field.field[rx + by]) {
+	if (field.field[lx + ty] || field.field[lx + by] ||  field.field[rx + ty] || field.field[rx + by]) {
 		return false;
 	}
 
@@ -106,18 +103,17 @@ function updateSingleParticle(particles,field, i) {
 // random walk step for all particles
 function updateAllParticles(particles, field) {
 	var i = particles.count;
-	while (i--) {
+	while (i--) 
 		updateSingleParticle(particles, field, i);
-	}
 }
 
 // set canvas width and height
-function resizeCanvas(width, height) {
-	var canvas = document.getElementById("canvasSimulation");
+function getContext(id, width, height) {
+	var canvas = document.getElementById(id);
 	canvas.width = width;
 	canvas.height = height;
 
-	return canvas;
+	return canvas.getContext('2d');
 }
 
 // paint particle positions on a canvas
