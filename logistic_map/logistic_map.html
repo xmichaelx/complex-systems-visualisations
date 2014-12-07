@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Logistic map</title>
+	<meta name="description" content="Logistic map">
+	<meta name="author" content="Michal Drzal">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+	  <div class="container">
+	  	<h1>Logistic map</h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<div type="button" class="btn btn-default" data-bind="click:draw">Draw</div>
+	    	</div>
+	    </div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Width</span>
+					<input type="text" class="form-control" data-bind="value:canvasWidth">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Height</span>
+					<input type="text" class="form-control" data-bind="value:canvasHeight">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">x0</span>
+					<input type="text" class="form-control" data-bind="value:x0">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">R min</span>
+					<input type="text" class="form-control" data-bind="value:rmin">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">R max</span>
+					<input type="text" class="form-control" data-bind="value:rmax">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">R subdivisions</span>
+					<input type="text" class="form-control" data-bind="value:rsubdiv">
+				</div>
+			</div><div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Iterations</span>
+					<input type="text" class="form-control" data-bind="value:iterations">
+				</div>
+			</div>
+	    </div>
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    		<canvas class="img-thumbnail" id="canvasSimulation"></canvas>
+    	</div>
+	  </div> 
+  </body>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+  <script src="logistic_map.js"></script>
+  <script src="simulation_setup.js"></script>
+</html>
