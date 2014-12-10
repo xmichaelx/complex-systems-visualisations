@@ -22,7 +22,7 @@ function cellular1d(n, num_iters, density, rules) {
 
 	for (var i = 1;i<num_iters;i++) {
 		var prevOffset = (i-1) * n, currentOffset = i * n;
-
+		
 		// left-most item
 		var str = "" + matrix[currentOffset-1] + matrix[prevOffset] + matrix[prevOffset + 1];
 
