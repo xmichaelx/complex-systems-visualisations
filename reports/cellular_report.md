@@ -7,8 +7,10 @@ Cellular automata report
 Simple 1D cellular automata
 ---------------------------
 
-[[ https://raw.githubusercontent.com/xmichaelx/complex-systems-visualisations/master/reports/rules/5.png | height = 100px ]]
 
+<img src="rules/5.png" alt="alt text" style="width:300;height:300">
+
+cellular
 
 
 
