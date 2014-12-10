@@ -7,8 +7,10 @@ Cellular automata report
 Simple 1D cellular automata
 ---------------------------
 
+Code visualising cellular automata is [here](../cellular).
 
-<div style="text-align:center"><img src="rules/5.png" alt="alt text" width="300" height="300"></div>
+
+<img src="rules/5.png" alt="alt text" width="300" height="300">
 
 cellular
 
