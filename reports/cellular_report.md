@@ -16,6 +16,10 @@ Sample rules visualised:
 
 Rule 5
 
+<img src="rules/45.png" alt="alt text" width="400" height="400">
+
+Rule 45
+
 
 Nagel-Schreckenberg model
 -------------------------
