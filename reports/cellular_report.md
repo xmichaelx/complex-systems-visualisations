@@ -72,7 +72,7 @@ Rule 154
 
 Rule 165
 
-<img src="rules/84.png" alt="alt text" width="600" height="600">
+<img src="rules/184.png" alt="alt text" width="600" height="600">
 
 Rule 184
 
