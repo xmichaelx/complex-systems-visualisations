@@ -60,5 +60,21 @@ Rule 106
 
 Rule 129
 
+<img src="rules/150.png" alt="alt text" width="600" height="600">
+
+Rule 150
+
+<img src="rules/154.png" alt="alt text" width="600" height="600">
+
+Rule 154
+
+<img src="rules/165.png" alt="alt text" width="600" height="600">
+
+Rule 165
+
+<img src="rules/84.png" alt="alt text" width="600" height="600">
+
+Rule 184
+
 Nagel-Schreckenberg model
 -------------------------
