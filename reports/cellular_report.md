@@ -12,7 +12,7 @@ Code visualising cellular automata is [here](../cellular).
 Sample rules visualised:
 
 
-<img src="rules/5.png" alt="alt text" width="300" height="300">
+<img src="rules/5.png" alt="alt text" width="400" height="400">
 
 Rule 5
 
