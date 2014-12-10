@@ -13,8 +13,8 @@
 	  	<h1>Diffusion-Limited aggregation</h1>
 	    <div class="row">
 	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-	    		<div type="button" class="btn btn-default" data-bind="click:startSimulation">Start simulation</div>
-	    		<div type="button" class="btn btn-default" data-bind="click:stopSimulation">Stop simulation</div>
+	    		<div type="button" class="btn btn-default" data-bind="click:startSimulation, visible:!workingSimulation()">Start simulation</div>
+	    		<div type="button" class="btn btn-default" data-bind="click:stopSimulation, visible:workingSimulation">Stop simulation</div>
 	    	</div>
 	    </div>
 		<div class="row">

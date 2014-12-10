@@ -80,72 +80,28 @@ function alone(particles, field, i) {
 
 // random walk step for a single particle
 function updateSingleParticle(particles,field, i) {
-	if (particles.stuck[i] == 0) {
-		var x = particles.x[i], y = particles.y[i];
+	var x = particles.x[i] + (Math.random() > 0.5 ? 1 : -1);
+	var y = particles.y[i] + (Math.random() > 0.5 ? 1 : -1);
 
-		x += Math.random() > 0.5 ? 1 : -1;
-		y += Math.random() > 0.5 ? 1 : -1;
+	if ( (x < 0) || (y < 0) || (x >= field.width) || (y >= field.height)) {
+		resetSingleParticle(particles, field, i);
+	}
 
-		if ( (x < 0) || (y < 0) || (x >= field.width) || (y >= field.height)) {
-			resetSingleParticle(particles, field, i);
-		}
-
-        particles.x[i] = x;
-        particles.y[i] = y;
-        
-		if (!alone(particles, field, i)) {
-			particles.stuck[i] = 1;
-			field.field[y*field.width + x] = 1;
-		}
+    particles.x[i] = x;
+    particles.y[i] = y;
+    
+	if (!alone(particles, field, i)) {
+		particles.stuck[i] = 1;
+		field.field[y*field.width + x] = 1;
 	}
 }
 
 // random walk step for all particles
 function updateAllParticles(particles, field) {
 	var i = particles.count;
-	while (i--) 
-		updateSingleParticle(particles, field, i);
-}
-
-// set canvas width and height
-function getContext(id, width, height) {
-	var canvas = document.getElementById(id);
-	canvas.width = width;
-	canvas.height = height;
-
-	return canvas.getContext('2d');
-}
-
-// paint particle positions on a canvas
-function paint(field, ctx, particles, stuckColor, activeColor) {
-	ctx.clearRect ( 0 , 0 , field.width, field.height );
-	var imageData = ctx.getImageData(0, 0, field.width, field.height);
-	
-	var activeR = parseInt(activeColor.substring(0,2),16);
-	var activeG = parseInt(activeColor.substring(2,4),16);
-	var activeB = parseInt(activeColor.substring(4,6),16);
-
-	var stuckR = parseInt(stuckColor.substring(0,2),16);
-	var stuckG = parseInt(stuckColor.substring(2,4),16);
-	var stuckB = parseInt(stuckColor.substring(4,6),16);
-
-	var data = imageData.data;
-	var i = particles.count;
 	while (i--) {
-    	var index = (particles.y[i] * field.width + particles.x[i]) * 4;
-    	if (particles.stuck[i]) {
-    		data[index]   = stuckR;	// red
-	        data[++index] = stuckG;	// green
-	        data[++index] = stuckB;	// blue
-    	}
-    	else {
-			data[index]   = activeR;	// red
-	        data[++index] = activeG;	// green
-	        data[++index] = activeB;	// blue
-    	}	
-    	
-        data[++index] = 255;	// alpha
-	}
-
-	ctx.putImageData(imageData, 0, 0);
+		if (particles.stuck[i] == 0) {
+			updateSingleParticle(particles, field, i);
+		}
+	}	
 }

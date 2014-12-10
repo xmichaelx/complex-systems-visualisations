@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cellular automata</title>
+	<meta name="description" content="Diffusion-Limited aggregation">
+	<meta name="author" content="Michal Drzal">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+	  <div class="container">
+	  	<h1>Cellular automata</h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<div type="button" class="btn btn-default" data-bind="click:draw">Draw</div>
+	    	</div>
+	    </div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Cells</span>
+					<input type="text" class="form-control" data-bind="value:n">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Iterations</span>
+					<input type="text" class="form-control" data-bind="value:num_iters">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Density</span>
+					<input type="text" class="form-control" data-bind="value:density">
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="input-group">
+					<span class="input-group-addon">Rules</span>
+					<input type="text" class="form-control" data-bind="value:rules">
+				</div>
+			</div>
+	    </div>
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    		<canvas class="img-thumbnail" id="canvasSimulation"></canvas>
+    	</div>
+	  </div> 
+  </body>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+  <script src="cellular.js"></script>
+  <script src="simulation_setup.js"></script>
+</html>
