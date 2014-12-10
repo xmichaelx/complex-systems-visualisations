@@ -78,3 +78,6 @@ Rule 184
 
 Nagel-Schreckenberg model
 -------------------------
+
+Code visualising Nagel-Schreckenberg model is [here](../nagel-schreckenberg).
+
