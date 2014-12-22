@@ -81,3 +81,28 @@ Nagel-Schreckenberg model
 
 Code visualising Nagel-Schreckenberg model is [here](../nagel-schreckenberg).
 
+<img src="rules/nagel_1_3_2.png" alt="alt text" width="600" height="600">
+
+Density: 10%
+Vmax: 3
+Slowing down probability: 20%
+
+<img src="rules/nagel_5_3_2.png" alt="alt text" width="600" height="600">
+
+Density: 50%
+Vmax: 3
+Slowing down probability: 20%
+
+<img src="rules/nagel_5_1_2.png" alt="alt text" width="600" height="600">
+
+Density: 50%
+Vmax: 1
+Slowing down probability: 20%
+
+<img src="rules/nagel_5_1_02.png" alt="alt text" width="600" height="600">
+
+Density: 50%
+Vmax: 1
+Slowing down probability: 2%
+
+
