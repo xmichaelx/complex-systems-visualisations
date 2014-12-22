@@ -1,18 +1,16 @@
 function pad(num, size) {
     var s = num+"";
-    while (s.length < size) s = "0" + s;
+    while (s.length < size) 
+    	s = "0" + s;
     return s;
 }
 
-
-function SimulationViewModel () {
+function SimulationViewModel (canvasId) {
 	var intervalId = -1;
 	this.n = ko.observable(500);
 	this.num_iters = ko.observable(500);
 	this.density = ko.observable(0.5);
 	this.rules = ko.observable(184);
-
-	
 
 	function paint(matrix, id, width, height) {
 		var canvas = document.getElementById(id);
@@ -20,7 +18,7 @@ function SimulationViewModel () {
 		canvas.width = width;
 		canvas.height = height;
 		canvas.style.width = 2*width + 'px';
-		canvas.style.width = 2*height +'px';
+		canvas.style.height = 2*height +'px';
 
 		var ctx = canvas.getContext('2d');
 
@@ -40,7 +38,6 @@ function SimulationViewModel () {
 			}
 		}
 		ctx.putImageData(imageData, 0, 0);
-
 	}
 
 	this.draw = function() {
@@ -49,17 +46,12 @@ function SimulationViewModel () {
 			density = this.density();
 		
 		var num = pad(parseInt(this.rules()).toString(2),8);
-		console.log(num);
 		var rules = {"111" : parseInt(num[0]), "110" : parseInt(num[1]), "101" : parseInt(num[2]), "100" : parseInt(num[3]), 
 			"011" : parseInt(num[4]), "010" : parseInt(num[5]), "001" : parseInt(num[6]), "000" : parseInt(num[7])};
 	
 		var matrix = cellular1d(n, num_iters, density, rules);
-		paint(matrix, "canvasSimulation", n, num_iters);
-
+		paint(matrix, canvasId, n, num_iters);
 	};
-	
-
-
 };
 
-ko.applyBindings(new SimulationViewModel());
+ko.applyBindings(new SimulationViewModel("canvasSimulation"));

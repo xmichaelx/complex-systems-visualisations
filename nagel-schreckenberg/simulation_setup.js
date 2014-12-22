@@ -20,8 +20,6 @@ function SimulationViewModel () {
 
 		canvas.width = width;
 		canvas.height = height;
-		canvas.style.width = 2*width + 'px';
-		canvas.style.width = 2*height +'px';
 
 		var ctx = canvas.getContext('2d');
 

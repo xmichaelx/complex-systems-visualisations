@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sandpile 2D</title>
+	<meta name="description" content="Diffusion-Limited aggregation">
+	<meta name="author" content="Michal Drzal">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+   
+  </head>
+  <body>
+	  <div class="container">
+	  	<h1>Sandpile 2D</h1>
+	    <div class="row">
+	    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	    		<div type="button" class="btn btn-default" data-bind="click:startSimulation">Start simulation</div>
+	    	</div>
+	    </div>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Width</span>
+					<input type="text" class="form-control" data-bind="value:canvasWidth">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Height</span>
+					<input type="text" class="form-control" data-bind="value:canvasHeight">
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon" data-bind="text:iterationsLeft">Iterations left</span>
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+				<div class="input-group">
+					<span class="input-group-addon">Iterations</span>
+					<input type="text" class="form-control" data-bind="value:iterations">
+				</div>
+			</div>
+	    </div>
+    	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    		<canvas id="canvasSimulation" style="width:400px;height:400px"></canvas>
+    	</div>
+	  </div> 
+  </body>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.2.0/knockout-min.js"></script>
+  <script src="sandpile2d.js"></script>
+  <script src="simulation_setup.js"></script>
+</html>
