@@ -1,6 +1,7 @@
 function SimulationViewModel () {
 	var intervalId = -1;
 	this.condensationType = ko.observable("bottom");
+	this.pixelSize = ko.observable(5);
 	this.canvasWidth = ko.observable(80);
 	this.canvasHeight = ko.observable(80);
 	this.iterationsLeft = ko.observable(1000);
@@ -15,35 +16,46 @@ function SimulationViewModel () {
 	};
 
 	// paint particle positions on a canvas
-	function paint(matrix, data) {
-
+	function paint(matrix, data, width, height, pixelSize) {
 		var x = matrix.width;
 		while (x--) {
 			var y = matrix.height;
 			while (y--) {
-				var index = (y * matrix.width + x) * 4;
 				var point = (4 - matrix.field[y * matrix.width + x]) / 4;
-				data[index]   = point*255;	// red
-			    data[++index] = point*255;	// green
-			    data[++index] = point*255;	// blue
-			    data[++index] = 255;	// alpha
+
+				for (var dy=0;dy<pixelSize;dy++) {
+					for (var dx=0;dx<pixelSize;dx++) {
+						var index = ((pixelSize*y + dy) * width + (pixelSize*x + dx)) * 4;
+				
+						data[index]   = point*255;	// red
+					    data[++index] = point*255;	// green
+					    data[++index] = point*255;	// blue
+					    data[++index] = 255;	// alpha
+					}
+				}
 			}
 		}
 	}
 
 
 	this.startSimulation = function() {
-		var width = this.canvasWidth(), height = this.canvasHeight(), iterations = this.iterations();
+		var pixelSize = this.pixelSize();
+
+		var width = this.canvasWidth();
+		var height = this.canvasHeight();
+		var canvasWidth = width * pixelSize;
+		var canvasHeight = height * pixelSize;
+
+		var iterations = this.iterations();
 
 		var canvas = document.getElementById("canvasSimulation");
-		canvas.width = width;
-		canvas.height =height;
+		canvas.width = canvasWidth;
+		canvas.height = canvasHeight;
 		var ctx = canvas.getContext('2d');
 		
 		var field = createField(width, height);
 
-		var imageData = ctx.getImageData(0, 0, field.width, field.height);
-		var clearCanvas = new Uint8Array(4*field.width * field.height)
+		var imageData = ctx.getImageData(0, 0, canvasWidth,canvasHeight);
 		if (intervalId > -1) {
 			clearInterval(intervalId);
 		}
@@ -54,7 +66,7 @@ function SimulationViewModel () {
 				updateAllParticles(field,sizes);
 			}
 			
-			paint(field, imageData.data);
+			paint(field, imageData.data, canvasWidth, canvasHeight, pixelSize);
 			
 			ctx.putImageData(imageData, 0, 0);
 
